@@ -3,6 +3,7 @@ set number
 set bg=dark
 set tw=79
 syntax on
+set transparency=15
 
 " adjust tab width here
 set shiftwidth=2
