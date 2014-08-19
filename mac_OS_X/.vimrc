@@ -3,7 +3,10 @@ set number
 set bg=dark
 set tw=79
 syntax on
-set transparency=15
+
+if has("gui_running")
+	set transparency=15
+endif
 
 " adjust tab width here
 set shiftwidth=2
