@@ -2,13 +2,13 @@
 
 ### Overview
 Vim is awesome. But sometimes, when your program crashes you may end up with
-undeleted .swp files. This is fine if you only have one or two files. But if
+undeleted `*.swp` files. This is fine if you only have one or two files. But if
 you are on a system that crashes every so often, eventually you are going to
-have a directory filled with these .swp files. Not very desirable eh?
+have a directory filled with these `*.swp` files. Not very desirable eh?
 
-This is a command line tool, written in bash script, that finds all .swp files
+This is a command line tool, written in bash script, that finds all `*.swp` files
 in a subdirectory and deletes them. You may call it in the top-level directory,
-or you may use the -d flag to pass the top level directory. Detailed usage is
+or you may use the `-d` flag to pass the top level directory. Detailed usage is
 described below.
 
 ### Usage
@@ -21,17 +21,17 @@ removes any swap files.
 
 ##### Options
 You may also run it with the following options:
-* -h|--help
+* -h | --help
   * Prints out the help message.
-* -f|--force-delete
+* -f | --force-delete
   * Does not ask for your permission before deleting the swap files.
-* -v|--verbose
+* -v | --verbose
   * A loquacious version of the script.
-* -g|--use-grep <grep_expression>
+* -g | --use-grep
   * Uses user-provided grep expression in its search.
   * The default grep pattern searches for .swp, .swo, ... files, since vim
     creates additional swap files when .swp is taken.
-* -d|--use-directory <dir>
+* -d | --use-directory
   * Uses the user-specified directory dir as top level directory
   * The default top-level directory is the current working directory.
 
@@ -63,6 +63,9 @@ And add one of the following lines:
 alias vclean=~/swp_clean.sh # if you use bash
 alias vclean ~/swp_clean.sh # if you use csh
 ```
+
+And then you can type `$ vclean` into your terminal and it will invoke this
+script!
 
 ### System Requirements
 You need to have find and you need to have grep. End of story.
