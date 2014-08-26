@@ -3,6 +3,7 @@
 # bash script that recursively cleans all .swp files under the current
 # directory.
 
+PACKAGE=swpclean
 CURR_DIR=`pwd`
 GREP='\.sw[a-z]$'
 RM_TARGET=`find $CURR_DIR | grep $GREP`
@@ -30,7 +31,29 @@ USEDIR=$CURR_DIR  # string
 while test $# -gt 0; do
   case "$1" in
       -h|--help)
-          echo "help!"
+          echo "$PACKAGE help:"
+	  echo " "
+          echo "$PACKAGE [-f | -v] [-g <grep_expression>| -d <dir>]"
+	  echo " "
+          echo "Uses the find and grep utilities in Unix to delete swap files under a certain top-level directory."
+	  echo " "
+	  echo "The options are as follows:"
+	  echo " "
+	  echo "-f|--force-delete:"
+	  echo "	  Force delete all found files when it can. Does not prompt for permission."
+	  echo " "
+	  echo "-v|--verbose :"
+	  echo "	  Verbose mode."
+	  echo " "
+	  echo "-g|--use-grep <grep expression> :"
+	  echo "	  Uses the user-provided grep expression when it is searching for
+	  files to clean. If unspecified, the default is to search for files
+	  ending in .sw? (such as .swp, .swo, etc.)."
+	  echo "	  For safe usage, enclose the grep expression in single quotes."
+	  echo " "
+	  echo "-d|--use-directory <dir> :"
+	  echo "	  Uses the user-specified directory as the top-level directory.
+	  If unspecified, the default is to search for files in the current directory."
           exit 0
           ;;
       -f|--force-delete)
