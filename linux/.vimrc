@@ -1,10 +1,11 @@
-colorscheme shine
+colorscheme elflord
 set number
 syntax on
 set expandtab
 set shiftwidth=2
 set softtabstop=2
 set smartindent
+set tw=79
 
 if has("gui_running")
 	try
