@@ -21,17 +21,17 @@ removes any swap files.
 
 ##### Options
 You may also run it with the following options:
-* -h | --help
+* `-h | --help`
   * Prints out the help message.
-* -f | --force-delete
+* `-f | --force-delete`
   * Does not ask for your permission before deleting the swap files.
-* -v | --verbose
+* `-v | --verbose`
   * A loquacious version of the script.
-* -g | --use-grep
+* `-g | --use-grep`
   * Uses user-provided grep expression in its search.
   * The default grep pattern searches for .swp, .swo, ... files, since vim
     creates additional swap files when .swp is taken.
-* -d | --use-directory
+* `-d | --use-directory`
   * Uses the user-specified directory dir as top level directory
   * The default top-level directory is the current working directory.
 
