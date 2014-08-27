@@ -6,6 +6,7 @@ syntax on
 
 if has("gui_running")
 	set transparency=15
+	set guifont=Monaco:h12 " the font on mac.
 endif
 
 " adjust tab width here
