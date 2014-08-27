@@ -13,7 +13,7 @@ described below.
 
 ### Usage
 ```
-swpclean [-f | -v] [-g <grep_expression>| -d <dir>]
+vclean [-f | -v] [-g <grep_expression>| -d <dir>]
 ```
 You may run this script without any arguments, in which case it will simply
 recurse down the current directory, and ask you for permission before it
