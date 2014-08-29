@@ -5,8 +5,7 @@
 
 PACKAGE=swpclean
 CURR_DIR=`pwd`
-GREP='\.sw[a-z]$'
-RM_TARGET=`find $CURR_DIR | grep $GREP`
+REGEX='.*.sw[a-z]$'
 
 # default
 if test $# -eq 0; then
@@ -15,7 +14,7 @@ if test $# -eq 0; then
   if [ -z $RM_TARGET ]; then
     echo "Did not find any swap files. Directory is clean."
   else
-    rm -i $RM_TARGET
+    find -name '.*.sw[a-z]' -exec rm -i {} \;
   fi
 
   exit 0
@@ -24,7 +23,7 @@ fi
 # additional environment variables
 FORCE=0           # boolean
 VERBOSE=0         # boolean
-USEGREP=$GREP     # string
+USEREGEX=$REGEX     # string
 USEDIR=$CURR_DIR  # string
 
 # multiple command line flags
@@ -74,7 +73,7 @@ while test $# -gt 0; do
                 exit -2
                 ;;
             *)
-                USEGREP="$1"
+                USEREGEX="$1"
                 shift
                 ;;
           esac
@@ -108,34 +107,29 @@ if [ $FORCE -ne 0 ]; then
   if [ $VERBOSE -ne 0 ]; then
     echo force $FORCE
     echo verbose $VERBOSE
-    echo grep $USEGREP
+    echo grep $USEREGEX
     echo dir $USEDIR
-    echo "Attemping to force clean all subdirectories with the grep pattern $GREP in top-level directory $USEDIR ..."
+    echo "Attemping to force clean all subdirectories with the grep pattern $REGEX in top-level directory $USEDIR ..."
   fi
 
-  RM_TARGET=`find $CURR_DIR | grep $GREP`
-
-  if [ -z $RM_TARGET ]; then
-    echo "Did not find any such files. Directory is clean."
-  else
-    rm -f $RM_TARGET
-  fi
+  find -name '.*.sw[a-z]' -exec rm -f {} \;
 
 else
   if [ $VERBOSE -ne 0 ]; then
     echo force $FORCE
     echo verbose $VERBOSE
-    echo grep $USEGREP
+    echo grep $USEREGEX
     echo dir $USEDIR
-    echo "Attemping to clean all subdirectories with the grep pattern $GREP in top-level directory $USEDIR ..."
+    echo "Attemping to clean all subdirectories with the grep pattern $REGEX in top-level directory $USEDIR ..."
   fi
 
-  RM_TARGET=`find $CURR_DIR | grep $GREP`
-
-  if [ -z $RM_TARGET ]; then
-    echo "Did not find any such files. Directory is clean."
+  cd $USEDIR
+  if [ $? -ne 0 ]; then
+    echo "Error: cannot find the directory."
+    exit -3
   else
-    rm -f $RM_TARGET
+    find -name '.*.sw[a-z]' -exec rm -i {} \;
   fi
+    cd $CURR_DIR
 fi
 
