@@ -1,0 +1,6 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =4
+let g:netrw_dirhist_1='/u/b/liaodazh/ECE568/ECE568-lab1/targets'
+let g:netrw_dirhist_2='/u/b/liaodazh/ECE568/ECE568-lab1'
+let g:netrw_dirhist_3='/u/b/liaodazh/ECE568/ECE568-lab1/sploits'
+let g:netrw_dirhist_4='/nfs/ug/homes-5/l/liaodazh'

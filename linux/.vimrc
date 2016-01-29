@@ -7,6 +7,11 @@ set softtabstop=2
 set smartindent
 set tw=79
 
+" for the 'Airline' plugin
+execute pathogen#infect()
+filetype plugin indent on
+set laststatus=2
+
 if has("gui_running")
 	try
 		colorscheme slate
@@ -28,6 +33,7 @@ function! TrimWhiteSpace()
 endfunction
 autocmd BufWritePre *.cpp : call TrimWhiteSpace()
 autocmd BufWritePre *.hpp : call TrimWhiteSpace()
+autocmd BufWritePre *.m : call TrimWhiteSpace()
 
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
