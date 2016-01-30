@@ -34,6 +34,9 @@ endfunction
 autocmd BufWritePre *.cpp : call TrimWhiteSpace()
 autocmd BufWritePre *.hpp : call TrimWhiteSpace()
 autocmd BufWritePre *.m : call TrimWhiteSpace()
+autocmd BufWritePre *.c : call TrimWhiteSpace()
+autocmd BufWritePre *.h : call TrimWhiteSpace()
+autocmd BufWritePre *.java : call TrimWhiteSpace()
 
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
